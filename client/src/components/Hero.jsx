@@ -45,7 +45,7 @@ export default function Hero({ cat, next }) {
     navigate(`/explore${params.size ? `?${params}` : ''}`);
   };
   return <section className="launch-hero" aria-labelledby="launch-title">
-    <div className="launch-grid-lines" data-parallax="0.05" aria-hidden="true" />
+    <div className="launch-grid-lines" aria-hidden="true" />
     <div className="container">
       <div className="launch-layout">
         <div className="launch-copy">
@@ -57,19 +57,19 @@ export default function Hero({ cat, next }) {
           <div className="launch-interests"><span>Find your room</span>{[['Investor Meets','investor-meets'],['Workshops','workshops'],['Wealth Sessions','wealth']].map(([label, category]) => <Link key={category} to={`/explore?category=${category}`}>{label}<Icon name="arrowUR" /></Link>)}<Link to="/private">HNI Events<Icon name="arrowUR" /></Link></div>
         </div>
         <div className="launch-scene" aria-label="Featured Aionion experience">
-          <div className="launch-halo" data-parallax="0.04" aria-hidden="true" />
-          <div className="launch-orbit launch-orbit-outer" data-parallax="0.10" aria-hidden="true" /><div className="launch-orbit launch-orbit-inner" data-parallax="0.08" aria-hidden="true" />
-          <div className="launch-plinth" data-parallax="0.12" data-parallax-scale aria-hidden="true"><span /><i /></div>
+          <div className="launch-halo" aria-hidden="true" />
+          <div className="launch-orbit launch-orbit-outer" aria-hidden="true" /><div className="launch-orbit launch-orbit-inner" aria-hidden="true" />
+          <div className="launch-plinth" aria-hidden="true"><span /><i /></div>
           {next ? <>
-            <div className="launch-date" data-parallax="0.42" data-parallax-x="10"><Icon name="calendar" /><span>{mon(next.date)}<b>{day(next.date)}</b></span><small>Your next<br />great conversation.</small></div>
-            <div className="launch-pass-float" data-parallax="0.28" data-parallax-rotate="1"><Link className="launch-pass" to={`/events/${next.id}`} aria-label={`View featured event: ${next.title}`}>
+            <div className="launch-date"><Icon name="calendar" /><span>{mon(next.date)}<b>{day(next.date)}</b></span><small>Your next<br />great conversation.</small></div>
+            <div className="launch-pass-float"><Link className="launch-pass" to={`/events/${next.id}`} aria-label={`View featured event: ${next.title}`}>
               <div className="launch-pass-heading"><span>AIONION <small>EVENTS</small></span><Icon name="ticket" /></div>
               <Ph src={next.img} className="launch-pass-image"><span>{next.label}</span></Ph>
               <div className="launch-pass-content"><span className="launch-pass-caption">THE FEATURED EXPERIENCE</span><h2>{next.title}</h2><p><Icon name="pin" />{next.city}<span>·</span>{time(next.date)}</p></div>
               <div className="launch-pass-perforation" />
               <div className="launch-pass-bottom"><div><small>TICKETS FROM</small><b>{inr(next.price)}</b><span>View experience <Icon name="arrowUR" /></span></div><div className="launch-pass-qr"><QR value={`AIO|PREVIEW|${next.id}`} label="Illustrative pass preview, not valid for entry" /><small>PREVIEW</small></div></div>
             </Link></div>
-            <div className="launch-access" data-parallax="0.20" data-parallax-x="-8"><span className="launch-access-icon"><Icon name="verified" /></span><div><b>Considered. Curated. Connected.</b><p>{next.seats > 0 ? `${next.seats} places available` : 'Explore the next experience'}<span />{next.format}</p></div></div>
+            <div className="launch-access"><span className="launch-access-icon"><Icon name="verified" /></span><div><b>Considered. Curated. Connected.</b><p>{next.seats > 0 ? `${next.seats} places available` : 'Explore the next experience'}<span />{next.format}</p></div></div>
           </> : <div className="launch-pass-placeholder"><Icon name="ticket" /><span>Your next opportunity<br />starts with a conversation.</span></div>}
           <span className="launch-scene-caption">REAL CONVERSATIONS. LASTING CONNECTIONS.</span>
         </div>

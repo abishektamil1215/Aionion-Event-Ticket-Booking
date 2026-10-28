@@ -9,7 +9,6 @@ import './styles/hero.css';
 import './styles/docs.css';
 import './styles/header.css';
 import './styles/page-banners.css';
-import './styles/parallax.css';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -10,7 +10,6 @@ import { Ph, Eyebrow, Arrow, CardSkeleton, Empty } from '../components/ui.jsx';
 import EventCard from '../components/EventCard.jsx';
 import Hero from '../components/Hero.jsx';
 import ExperienceStage from '../components/ExperienceStage.jsx';
-import ParallaxController from '../components/ParallaxController.jsx';
 
 export default function Home() {
   const cat = useCatalog();
@@ -29,7 +28,6 @@ export default function Home() {
   }, [events, user]);
   return (
     <>
-      <ParallaxController />
       <Hero cat={cat} next={showcase.next} />
       <ExperienceStage />
       {error && <div className="container"><div className="demo-note" role="alert"><p>We couldn’t load events. {error.message}</p><button className="btn btn-ghost" onClick={reload}>Try again</button></div></div>}

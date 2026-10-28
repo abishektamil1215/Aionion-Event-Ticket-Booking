@@ -57,7 +57,7 @@ export default function Hero({ cat, next }) {
           <div className="launch-interests"><span>Find your room</span>{[['Investor Meets','investor-meets'],['Workshops','workshops'],['Wealth Sessions','wealth']].map(([label, category]) => <Link key={category} to={`/explore?category=${category}`}>{label}<Icon name="arrowUR" /></Link>)}<Link to="/private">HNI Events<Icon name="arrowUR" /></Link></div>
         </div>
         <div className="launch-scene" aria-label="Featured Aionion experience">
-          <div className="launch-halo" aria-hidden="true" />
+          <div className="launch-halo" data-parallax="0.04" aria-hidden="true" />
           <div className="launch-orbit launch-orbit-outer" data-parallax="0.10" aria-hidden="true" /><div className="launch-orbit launch-orbit-inner" data-parallax="0.08" aria-hidden="true" />
           <div className="launch-plinth" data-parallax="0.12" data-parallax-scale aria-hidden="true"><span /><i /></div>
           {next ? <>

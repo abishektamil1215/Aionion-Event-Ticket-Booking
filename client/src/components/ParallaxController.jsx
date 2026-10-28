@@ -9,7 +9,7 @@ const number = (value, limit) => Math.max(-limit, Math.min(limit, Number(value) 
 /** Home-only, opt-in scroll depth. Individual transforms preserve existing CSS transforms. */
 export default function ParallaxController() {
   useLayoutEffect(() => {
-    const root = document.getElementById('main');
+    const root = document.querySelector('.launch-hero');
     if (!root) return;
     let targets = [], media, frame, measurementFrame, disposed = false;
     const entered = new WeakSet();
@@ -53,6 +53,27 @@ export default function ParallaxController() {
           });
         });
         return () => targets.forEach((el) => el.classList.remove('parallax-active'));
+      });
+      media.add('(min-width: 769px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+        gsap.set(targets, { '--parallax-pointer-x': '0px', '--parallax-pointer-y': '0px' });
+        const layers = targets.map((el) => ({
+          el, depth: number(el.dataset.parallax, .45),
+          x: gsap.quickTo(el, '--parallax-pointer-x', { duration: .85, ease: 'power3.out' }),
+          y: gsap.quickTo(el, '--parallax-pointer-y', { duration: .85, ease: 'power3.out' })
+        }));
+        const move = (event) => {
+          const bounds = root.getBoundingClientRect();
+          const x = Math.max(-.5, Math.min(.5, (event.clientX - bounds.left) / bounds.width - .5));
+          const y = Math.max(-.5, Math.min(.5, (event.clientY - bounds.top) / bounds.height - .5));
+          layers.forEach((layer) => { layer.x(x * layer.depth * 72); layer.y(y * layer.depth * 48); });
+        };
+        const reset = () => layers.forEach((layer) => { layer.x(0); layer.y(0); });
+        root.addEventListener('pointermove', move);
+        root.addEventListener('pointerleave', reset);
+        return () => {
+          root.removeEventListener('pointermove', move);
+          root.removeEventListener('pointerleave', reset);
+        };
       });
     };
     const schedule = () => {

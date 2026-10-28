@@ -263,7 +263,7 @@ function PrivateBand({ cat }) {
           <Link to="/private" className="link-u" style={{ marginTop: 22, color: 'var(--champagne)' }}>Request an invitation <Icon name="arrow" /></Link>
         </div>
         <div className="pv-visual reveal" style={{ '--d': 0.15 }}>
-          <div className="parallax-image-window"><Ph src={cat?.images.lounge} className="pv-photo" data-parallax="0.1" data-parallax-image /></div>
+          <Ph src={cat?.images.lounge} className="pv-photo" />
           <ul className="pv-feats glass">
             {feats.map(([ic, t, d]) => <li key={t}><Icon name={ic} /><span><b>{t}</b><small>{d}</small></span></li>)}
           </ul>

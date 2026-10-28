@@ -106,7 +106,8 @@ html[data-theme="light"] .launch-plinth { background: linear-gradient(180deg,#ed
 .hero-type-frame { display: block; transform-style: preserve-3d; }
 .hero-type-line { display: block; animation: hero-line-enter .5s cubic-bezier(.16,1,.3,1) both; transform-origin: 50% 100%; }
 .hero-type-second { animation-delay: .1s; }
-.launch-copy .hero-type-scene h1 em { background: none; color: inherit; white-space: nowrap; }
+.launch-copy .hero-type-scene h1 em,
+html[data-theme="light"] .launch-copy .hero-type-scene h1 em { background: none; color: inherit; white-space: nowrap; }
 .launch-copy .hero-type-scene h1 em > span { display: inline-block; color: var(--type-accent); background: linear-gradient(120deg,var(--type-accent),#d6d9ff 42%,#fe899e 70%,var(--type-accent)); background-size: 240% 100%; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: hero-letter-enter .55s cubic-bezier(.16,1,.3,1) both, hero-letter-shimmer 6s ease-in-out infinite; animation-delay: calc(var(--letter) * 20ms), 1s; filter: drop-shadow(0 4px 5px #677aff18); }
 html[data-theme="light"] .hero-type-scene { --type-accent: #2447e9; }
 html[data-theme="light"] .hero-type-2 { --type-accent: #087b80; }

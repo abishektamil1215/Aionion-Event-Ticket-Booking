@@ -24,7 +24,7 @@ export default function ExperienceStage() {
         <div className="experience-controls" role="group" aria-label="Choose an experience">
           {EVENT_GROUPS.map(({ name }, index) => <button key={name} aria-pressed={active === index} onClick={() => { setActive(index); setPaused(true); }}><span>0{index + 1}</span>{name}<i /></button>)}
         </div>
-        <button className="experience-pause" onClick={() => setPaused((value) => !value)} aria-pressed={paused}>{paused ? 'Play animation' : 'Pause animation'}<span aria-hidden="true">{paused ? ' ▷' : ' Ⅱ'}</span></button>
+        <button className="experience-pause" onClick={() => setPaused((value) => !value)} aria-label={paused ? 'Play animation' : 'Pause animation'} aria-pressed={paused}><span aria-hidden="true">{paused ? '▷' : 'Ⅱ'}</span></button>
       </div>
       <div className="experience-space">
         <div className="experience-ring" aria-hidden="true" />

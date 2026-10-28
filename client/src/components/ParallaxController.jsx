@@ -11,7 +11,11 @@ export default function ParallaxController() {
   useLayoutEffect(() => {
     const root = document.getElementById('main');
     if (!root) return;
-    let targets = [], media, frame, disposed = false;
+    let targets = [], media, frame, measurementFrame, disposed = false;
+    const measure = () => {
+      cancelAnimationFrame(measurementFrame);
+      measurementFrame = requestAnimationFrame(() => { if (!disposed) ScrollTrigger.refresh(); });
+    };
     const refresh = () => {
       const next = [...root.querySelectorAll(SELECTOR)];
       if (next.length === targets.length && next.every((el, i) => el === targets[i])) return;
@@ -51,10 +55,14 @@ export default function ParallaxController() {
     // Event data arrives asynchronously; ignore text updates and our own inline styles.
     const observer = new MutationObserver(schedule);
     observer.observe(root, { childList: true, subtree: true });
-    document.fonts?.ready.then(() => { if (!disposed) ScrollTrigger.refresh(); });
+    const resize = new ResizeObserver(measure);
+    resize.observe(root);
+    root.addEventListener('load', measure, true);
+    document.fonts?.ready.then(() => { if (!disposed) measure(); });
     return () => {
       disposed = true;
-      observer.disconnect(); cancelAnimationFrame(frame); media?.revert();
+      observer.disconnect(); resize.disconnect(); root.removeEventListener('load', measure, true);
+      cancelAnimationFrame(frame); cancelAnimationFrame(measurementFrame); media?.revert();
       targets.forEach((el) => el.classList.remove('parallax-active'));
     };
   }, []);

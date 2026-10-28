@@ -1,0 +1,129 @@
+/* Help, contact, about and policy pages. Uses theme tokens, so light & dark both work. */
+.doc-page { padding-top: calc(var(--header-h) + 72px); padding-bottom: 120px; }
+.doc-head { max-width: 860px; }
+.doc-head .eyebrow { margin-top: 22px; }
+.doc-head .h1 { margin: 18px 0 18px; }
+.doc-head .lead { max-width: 720px; }
+.doc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 24px; font-size: 13.5px; color: var(--steel); }
+.doc-meta span { display: inline-flex; align-items: center; gap: 8px; }
+.doc-meta .icon { width: 16px; height: 16px; }
+.doc-meta .link-u { font-size: 13.5px; }
+
+.doc-glance { margin-top: 44px; }
+.doc-glance .label { display: block; margin-bottom: 14px; }
+.glance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.glance { padding: 22px; border-radius: 18px; }
+.glance .icon { width: 22px; height: 22px; color: var(--blue-3); }
+.glance b { display: block; margin-top: 14px; font-weight: 500; font-size: 16px; color: var(--white); }
+.glance p { margin-top: 4px; font-size: 13.5px; line-height: 1.55; color: var(--grey); }
+
+.doc-layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 64px; align-items: start; margin-top: 64px; }
+.doc-layout:not(:has(.doc-toc)) { grid-template-columns: minmax(0, 1fr); }
+.doc-toc { position: sticky; top: 110px; max-height: calc(100vh - 140px); overflow-y: auto; scrollbar-width: thin; }
+.doc-toc summary { list-style: none; cursor: pointer; padding-bottom: 12px; }
+.doc-toc summary::-webkit-details-marker { display: none; }
+.doc-toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line-soft); }
+.doc-toc a { display: block; padding: 7px 0 7px 16px; margin-left: -1px; border-left: 2px solid transparent; font-size: 14px; line-height: 1.4; color: var(--grey); transition: color .25s, border-color .25s; }
+.doc-toc a:hover { color: var(--white); }
+.doc-toc a.is-active { color: var(--white); border-left-color: var(--blue-2); }
+
+.doc-body { max-width: 780px; }
+.doc-section { padding: 0 0 40px; margin-bottom: 40px; border-bottom: 1px solid var(--line-soft); scroll-margin-top: 110px; }
+.doc-section:last-of-type { border-bottom: 0; }
+.doc-section h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.02em; line-height: 1.2; color: var(--white); margin-bottom: 16px; }
+.doc-body p { color: var(--grey); font-size: 16px; line-height: 1.75; }
+.doc-body p + p, .doc-body p + .doc-list, .doc-list + p, .doc-table-wrap + p, .doc-steps + p, .doc-note + p, p + .doc-table-wrap, p + .doc-steps, p + .doc-contacts, p + .doc-note { margin-top: 16px; }
+.doc-body strong { color: var(--white); font-weight: 600; }
+.doc-body p a, .doc-list a, .doc-table a, .doc-faq a, .doc-contacts a, .terms a, .policy-consent a { color: var(--blue-3); text-decoration: underline; text-decoration-color: rgba(143, 162, 255, .4); text-underline-offset: 3px; }
+.doc-body p a:hover, .doc-list a:hover, .doc-contacts a:hover { text-decoration-color: currentColor; }
+
+.doc-list { list-style: none; margin: 0; padding: 0; }
+.doc-list li { position: relative; padding-left: 24px; color: var(--grey); font-size: 16px; line-height: 1.7; }
+.doc-list li + li { margin-top: 10px; }
+.doc-list li::before { content: ''; position: absolute; left: 4px; top: .72em; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-2); }
+
+.doc-note { display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; border-radius: 14px; background: rgba(0, 35, 255, .08); border: 1px solid rgba(72, 103, 255, .3); color: var(--white) !important; font-size: 15px !important; }
+.doc-note .icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; color: var(--blue-3); }
+
+.doc-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.doc-steps li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding: 18px; border-radius: 16px; border: 1px solid var(--line-soft); background: var(--glass-2); }
+.doc-steps span { font-family: var(--f-mono); font-size: 12px; color: var(--blue-3); padding-top: 3px; }
+.doc-steps b { display: block; font-weight: 500; color: var(--white); }
+.doc-steps p { font-size: 14.5px !important; margin-top: 4px; }
+
+.doc-table-wrap { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.doc-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.doc-table th, .doc-table td { padding: 14px 18px; text-align: left; vertical-align: top; line-height: 1.55; }
+.doc-table thead th { font-family: var(--f-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--steel); background: var(--glass-2); border-bottom: 1px solid var(--line); }
+.doc-table tbody th { font-weight: 500; color: var(--white); width: 38%; }
+.doc-table td { color: var(--grey); }
+.doc-table tbody tr + tr { border-top: 1px solid var(--line-soft); }
+
+.doc-faq details { border-bottom: 1px solid var(--line-soft); }
+.doc-faq details:first-child { border-top: 1px solid var(--line-soft); }
+.doc-faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; font-size: 16.5px; color: var(--white); }
+.doc-faq summary::-webkit-details-marker { display: none; }
+.doc-faq summary i { position: relative; width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--line); }
+.doc-faq summary i::before, .doc-faq summary i::after { content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: currentColor; transform: translate(-50%, -50%); transition: transform .35s var(--ease); }
+.doc-faq summary i::after { transform: translate(-50%, -50%) rotate(90deg); }
+.doc-faq details[open] summary i::after { transform: translate(-50%, -50%) rotate(0); }
+.doc-faq details p { padding: 0 44px 20px 0; }
+
+.doc-contacts { margin: 0; border-top: 1px solid var(--line-soft); }
+.doc-contacts div { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
+.doc-contacts dt { color: var(--steel); }
+.doc-contacts dd { margin: 0; color: var(--white); overflow-wrap: anywhere; }
+
+mark.tbc { background: rgba(254, 102, 124, .1); color: var(--coral); border: 1px dashed rgba(254, 102, 124, .55); border-radius: 6px; padding: 0 6px; font-size: .94em; white-space: normal; }
+
+.doc-cta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 28px; border-radius: 20px; margin-top: 8px; }
+.doc-cta b { font-size: 18px; font-weight: 500; color: var(--white); }
+.doc-cta p { font-size: 14px !important; margin-top: 4px; }
+
+.doc-related { margin-top: 48px; }
+.doc-related .label { display: block; margin-bottom: 14px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.related { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px; border: 1px solid var(--line-soft); border-radius: 14px; color: var(--white); font-size: 15px; transition: border-color .3s, transform .4s var(--ease); }
+.related .icon { width: 16px; height: 16px; color: var(--blue-3); transition: transform .4s var(--ease); }
+.related:hover { border-color: var(--blue-2); }
+.related:hover .icon { transform: translateX(3px); }
+
+.policy-consent { margin: 16px 0 4px; font-size: 12.5px; line-height: 1.6; color: var(--steel); }
+
+@media (max-width: 1080px) {
+  .doc-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 40px; }
+  .doc-toc { position: static; max-height: none; padding: 16px 18px; border: 1px solid var(--line-soft); border-radius: 16px; }
+  .doc-toc summary { padding-bottom: 0; display: flex; justify-content: space-between; }
+  .doc-toc summary::after { content: '+'; font-family: var(--f-body); font-size: 18px; line-height: 1; color: var(--grey); }
+  .doc-toc details[open] summary { padding-bottom: 12px; }
+  .doc-toc details[open] summary::after { content: '−'; }
+}
+@media (max-width: 760px) {
+  .doc-page { padding-top: calc(var(--header-h) + 44px); padding-bottom: 80px; }
+  .doc-glance { margin-top: 32px; }
+  .glance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .glance { padding: 16px; }
+  .doc-section { padding-bottom: 32px; margin-bottom: 32px; }
+  .doc-body p, .doc-list li { font-size: 15.5px; }
+  /* tables become labelled cards */
+  .doc-table thead { display: none; }
+  .doc-table tr { display: block; padding: 14px 16px; }
+  .doc-table th, .doc-table td { display: block; padding: 0; width: auto !important; }
+  .doc-table tbody th { margin-bottom: 8px; }
+  .doc-table td { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 12px; padding: 4px 0; font-size: 14px; }
+  .doc-table td::before { content: attr(data-label); color: var(--steel); font-size: 12.5px; }
+  .doc-contacts div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .doc-faq details p { padding-right: 0; }
+  .doc-cta { padding: 22px; }
+}
+@media (max-width: 380px) { .glance-grid { grid-template-columns: minmax(0, 1fr); } }
+
+@media print {
+  .doc-page, .doc-page * { color: #111 !important; background: none !important; box-shadow: none !important; border-color: #ccc !important; }
+  .doc-page { padding: 0 !important; }
+  .doc-toc, .doc-meta .link-u, .doc-cta, .doc-related, .crumbs { display: none !important; }
+  .doc-layout { display: block; margin-top: 16px; }
+  .doc-faq details { break-inside: avoid; }
+  .doc-faq details > p { display: block; }
+  mark.tbc { border: 1px dashed #999 !important; }
+}

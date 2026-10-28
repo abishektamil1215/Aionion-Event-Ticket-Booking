@@ -1,0 +1,16 @@
+[build]
+  command = "npm --prefix server ci && npm --prefix client ci && npm run build:preview"
+  publish = "client/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/preview-api/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"

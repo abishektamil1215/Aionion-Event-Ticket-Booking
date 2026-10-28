@@ -18,7 +18,7 @@ function AnimatedHeadline() {
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (paused || motion.matches) return;
-    const timer = window.setInterval(() => setIndex((value) => (value + 1) % HEADLINES.length), 5500);
+    const timer = window.setInterval(() => setIndex((value) => (value + 1) % HEADLINES.length), 3000);
     return () => window.clearInterval(timer);
   }, [paused]);
   const [line, prefix, word, , detail] = HEADLINES[index];

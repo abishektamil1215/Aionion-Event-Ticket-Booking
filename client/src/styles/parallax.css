@@ -1,7 +1,7 @@
 /* Opt-in layers compose with the original positioning and transforms. */
 @media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
   :is([data-parallax], [data-parallax-rotate], [data-parallax-scale], [data-parallax-x]) {
-    translate: var(--parallax-x, 0px) var(--parallax-y, 0px) 0px;
+    translate: var(--parallax-x, 0px) calc(var(--parallax-y, 0px) + var(--parallax-entry, 0px)) 0px;
     rotate: var(--parallax-turn, 0deg);
     scale: var(--parallax-size, 1);
     backface-visibility: hidden;

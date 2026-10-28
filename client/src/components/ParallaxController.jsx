@@ -12,6 +12,7 @@ export default function ParallaxController() {
     const root = document.getElementById('main');
     if (!root) return;
     let targets = [], media, frame, measurementFrame, disposed = false;
+    const entered = new WeakSet();
     const measure = () => {
       cancelAnimationFrame(measurementFrame);
       measurementFrame = requestAnimationFrame(() => { if (!disposed) ScrollTrigger.refresh(); });
@@ -24,6 +25,13 @@ export default function ParallaxController() {
       media = gsap.matchMedia();
       // Mobile keeps the existing gentle section reveals, with no scroll displacement.
       media.add('(min-width: 769px) and (prefers-reduced-motion: no-preference)', () => {
+        const entering = targets.filter((el) => el.matches('.launch-pass-float, .launch-date, .launch-access') && !entered.has(el));
+        entering.forEach((el) => entered.add(el));
+        if (entering.length && window.scrollY < 100) {
+          gsap.fromTo(entering, { '--parallax-entry': '24px', opacity: 0 }, {
+            '--parallax-entry': '0px', opacity: 1, duration: 1.1, stagger: .12, ease: 'power3.out'
+          });
+        }
         targets.forEach((el) => {
           const section = el.closest('section') || el;
           const image = el.hasAttribute('data-parallax-image');
@@ -31,7 +39,7 @@ export default function ParallaxController() {
             '--parallax-y': image ? '-3%' : '0px',
             '--parallax-x': '0px', '--parallax-turn': '0deg', '--parallax-size': 1
           }, {
-            '--parallax-y': image ? '3%' : `${-number(el.dataset.parallax, .45) * 160}px`,
+            '--parallax-y': image ? '3%' : () => `${-number(el.dataset.parallax, .45) * Math.min(420, window.innerHeight * .5)}px`,
             '--parallax-x': `${number(el.dataset.parallaxX, 20)}px`,
             '--parallax-turn': `${number(el.dataset.parallaxRotate, 1.5)}deg`,
             '--parallax-size': el.hasAttribute('data-parallax-scale') ? 1.02 : 1,

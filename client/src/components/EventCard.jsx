@@ -19,7 +19,7 @@ export default function EventCard({ e, delay = 0, size }) {
   return (
     <article className={`ecard reveal ${size === 'lg' ? 'ecard-lg' : ''}`} style={{ '--d': delay }}>
       <Link to={to} className="media" tabIndex={-1} aria-hidden="true">
-        <Ph src={e.img} />
+        <Ph src={e.img} {...(size === 'lg' ? { 'data-parallax': '0.1', 'data-parallax-image': true } : {})} />
         <div className="m-top">
           <span className="tag">{e.label}</span>
           {e.format !== 'In-person' && <span className="tag blue"><i className="pulse" />{e.format}</span>}

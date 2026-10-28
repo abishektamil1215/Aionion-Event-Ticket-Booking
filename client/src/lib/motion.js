@@ -25,7 +25,7 @@ export function useRevealAll(key) {
 /** Delegated pointer effects: glass reflection (--mx/--my) and soft magnetic buttons. */
 export function useGlobalPointerFx() {
   useEffect(() => {
-    if (reduced()) return;
+    if (reduced() || window.matchMedia('(max-width: 768px), (hover: none)').matches) return;
     const onMove = (ev) => {
       const t = ev.target.closest && ev.target.closest('.sheen, .ecard');
       if (t) {

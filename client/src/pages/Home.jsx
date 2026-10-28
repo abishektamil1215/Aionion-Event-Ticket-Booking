@@ -10,6 +10,7 @@ import { Ph, Eyebrow, Arrow, CardSkeleton, Empty } from '../components/ui.jsx';
 import EventCard from '../components/EventCard.jsx';
 import Hero from '../components/Hero.jsx';
 import ExperienceStage from '../components/ExperienceStage.jsx';
+import ParallaxController from '../components/ParallaxController.jsx';
 
 export default function Home() {
   const cat = useCatalog();
@@ -28,6 +29,7 @@ export default function Home() {
   }, [events, user]);
   return (
     <>
+      <ParallaxController />
       <Hero cat={cat} next={showcase.next} />
       <ExperienceStage />
       {error && <div className="container"><div className="demo-note" role="alert"><p>We couldn’t load events. {error.message}</p><button className="btn btn-ghost" onClick={reload}>Try again</button></div></div>}
@@ -261,7 +263,7 @@ function PrivateBand({ cat }) {
           <Link to="/private" className="link-u" style={{ marginTop: 22, color: 'var(--champagne)' }}>Request an invitation <Icon name="arrow" /></Link>
         </div>
         <div className="pv-visual reveal" style={{ '--d': 0.15 }}>
-          <Ph src={cat?.images.lounge} className="pv-photo" />
+          <div className="parallax-image-window"><Ph src={cat?.images.lounge} className="pv-photo" data-parallax="0.1" data-parallax-image /></div>
           <ul className="pv-feats glass">
             {feats.map(([ic, t, d]) => <li key={t}><Icon name={ic} /><span><b>{t}</b><small>{d}</small></span></li>)}
           </ul>

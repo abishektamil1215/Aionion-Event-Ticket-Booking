@@ -17,7 +17,7 @@ export default function Home() {
   const { data: events, loading, error, reload } = useApi('/events');
   const showcase = useMemo(() => {
     if (!events) return { next: null, featured: null, upcoming: null, recommended: null };
-    const next = events.find((event) => event.id === 'money-pechu-chennai') || events[0];
+    const next = events.find((event) => event.id === 'market-outlook-2027') || events[0];
     const remaining = events.filter((event) => event.id !== next?.id);
     const featured = [...remaining].sort((a, b) => Number(!!b.featured) - Number(!!a.featured) || (b.popular || 0) - (a.popular || 0)).slice(0, 3);
     const used = new Set([next?.id, ...featured.map((event) => event.id)]);
